@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSTricks Diagrams with Images</title>
+    <style>
+        body {
+            font-family: monospace;
+            margin: 20px;
+        }
+        .section {
+            margin-bottom: 40px;
+            border: 1px solid #ccc;
+            padding: 15px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        button {
+            padding: 5px 10px;
+            margin-top: 5px;
+        }
+        h3 {
+            margin-top: 0;
+        }
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .code-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        .image-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PSTricks Diagrams with Images</h1>
+    
+    <div class="section">
+        <h3>Diagram 1: Grid with Shapes</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code1">
+\begin{pspicture}(8,8)
+  \psgrid(0,0)(8,8)
+  % dotted red segment
+  \psline[linestyle=dotted,linecolor=red,linewidth=2pt](2,3)(4,5)
+  % blue triangle
+  \psline[linecolor=blue](1,1)(5,1)(1,4)(1,1)
+  % hollow circle
+  \pscircle[linestyle=dotted](3,2.5){2.5}
+  % filled small circle
+  \pscircle[fillstyle=solid,fillcolor=blue](2,2){1}
+  % vectors
+  \psline{<-}(5,5)(7,7)
+  \psline{<->}(1.5,5.5)(3.5,5.5)
+  % filled dot and cross dots
+  \pscircle*(6,6){1}
+  \psdots[dotstyle=+](1.5,6.5)(1.5,7.5)
+  \psdots[dotstyle=o](1.8,6.8)
+\end{pspicture}</pre>
+                <button onclick="copyText('code1')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\1st.png" alt="Diagram 1 - Grid with dots, lines, circles and triangles" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 1</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 2: Grid with Unit Setting</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code2">
+\begin{pspicture}(6,6)
+  \psset{unit=1.5}             % 1 unit = 1.5 cm
+  \psgrid(0,0)(9,9)
+  \pscircle(2,2){1}
+\end{pspicture}</pre>
+                <button onclick="copyText('code2')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\2nd.png" alt="Diagram 2 - Grid with circle" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 2</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 3: Filled Shapes with Colors</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code3">
+\begin{pspicture}(6,6)
+  \psset{fillcolor=yellow,linecolor=blue}
+  \psgrid(0,0)(9,9)
+  \pscircle[fillstyle=solid](2,2){1}
+  \psline(2,2)(4,4)
+  \psline[linestyle=dashed](1,2)(4,5)
+\end{pspicture}</pre>
+                <button onclick="copyText('code3')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\3rd.png" alt="Diagram 3 - Yellow circle with blue lines" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 3</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 4: Triangle with Arcs</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code4">
+\begin{pspicture}(5,5)
+  \psgrid(0,0)(7,7)
+  \psline(1,1)(3,1)(2,2.732)(1,1)
+  % right‐side arc
+  \psarc[linewidth=0.1pt](1,1){2}{0}{70}
+  % left‐side arc
+  \psarc[linewidth=0.1pt](3,1){2}{110}{180}
+\end{pspicture}</pre>
+                <button onclick="copyText('code4')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\4th.png" alt="Diagram 4 - Triangle with arcs" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 4</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 5: Circle with Wedge</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code5">
+\begin{pspicture}(8,8)
+  \pscircle(2,2){1.5}
+  \pswedge[fillstyle=solid,fillcolor=blue](2,2){1.5}{0}{60}
+  \put(2.75,1.7){$r$}
+  \put(2.25,2){$\theta$}
+  \put(3.25,3){circle}
+  \rput{90}(2,4){$r$}
+\end{pspicture}</pre>
+                <button onclick="copyText('code5')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\5th.png" alt="Diagram 5 - Circle with blue wedge" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 6</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 6: Clipped Ellipse</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code6">
+\begin{pspicture}(7,7)
+  \psgrid(0,0)(9,9)
+  \psclip{\psellipse(2,2)(1.5,1)}
+    \put(1.7,1.7){$C$}
+    \psline[fillstyle=solid,fillcolor=magenta](2,2)(4,2)(4,4)(2,2)
+    \psline(8,8)(9,9)  % outside clip—won't show
+  \endpsclip
+  \psellipse(2,2)(1.5,1) % redraw boundary
+\end{pspicture}</pre>
+                <button onclick="copyText('code6')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\6th.png" alt="Diagram 6 - Clipped ellipse with magenta triangle" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 7</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 7: Parabola</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code7">
+\begin{pspicture}(-2,-2)(2,2)
+  \psgrid(-2,-2)(5,5)
+  \parabola{<->}(-2,1)(0,0)
+  \psline{<->}(-2,-1)(2,-1)
+  \put(0,1){\circle*{0.1}}
+  \put(-0.5,1){$F$}
+\end{pspicture}</pre>
+                <button onclick="copyText('code7')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\7th.png" alt="Diagram 7 - Parabola with focus point" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 8</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 8: Cross Pattern</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code8">
+\begin{pspicture}(5,4)
+  \psset{unit=0.5}
+  \psgrid(0,0)(13,13)
+  \def\cross{%
+    \psline[fillstyle=solid,fillcolor=green]
+      (0,0)(1,0)(1,1)(2,1)(2,2)(1,2)(1,3)(0,3)(0,2)(-1,2)(-1,1)(0,1)(0,0)%
+  }
+  \put(3,1){\cross}
+  \put(6,2){\cross}
+  \put(9,3){\cross}
+  \rput{60}(10,10){\cross}
+\end{pspicture}</pre>
+                <button onclick="copyText('code8')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\8th.png" alt="Diagram 8 - Green cross pattern" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 9</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 9: Sine Wave Function</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code9">
+\begin{pspicture}(-3,-4.25)(7.5,4.25)
+  \psset{xunit=2cm,yunit=2cm}
+  \psaxes[linecolor=red,linewidth=0.1pt]{<->}(5,3)
+  \psplot[algebraic=true,plotpoints=2500,linecolor=blue]
+    {0.025}{2}{sin(1/x)}
+  \put(7,-0.5){$x$}
+  \put(-0.5,5){$y$}
+  \put(3,3){$y=\sin\dfrac1x$}
+\end{pspicture}</pre>
+                <button onclick="copyText('code9')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\9th.png" alt="Diagram 9 - Sine wave function plot" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 10</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 10: Square Root and Quadratic Function</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code10">
+\begin{pspicture}(-0.5,-0.5)(5,5.5)
+  \psset{xunit=4cm,yunit=4cm,plotpoints=500}
+  \psaxes{->}(0,0)(1.25,1.25)
+  \psplot[algebraic=true,linecolor=red]{0}{1}{sqrt(x)}
+  \psplot[algebraic=true,linecolor=blue]{0}{1}{x^2}
+  \put(5,-0.5){$x$}
+  \put(-0.5,5){$y$}
+  \put(1.75,3.75){$y=\sqrt{x}$}
+\end{pspicture}</pre>
+                <button onclick="copyText('code10')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\10th.png" alt="Diagram 10 - Square root and quadratic functions" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 11</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 11: Parametric Plot with Arrows</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code11">
+\begin{pspicture}(-2.5,-2.5)(2.5,2.5)
+  \psset{xunit=3cm,yunit=3cm}
+  \psaxes[ticks=none,labels=none]{<->}(0,0)(-2.5,-0.75)(2.5,0.75)
+  \parametricplot[plotpoints=500,arrows=->,arrowscale=1.5]
+    {0}{360}{1 t cos add t sin}
+  \put(4.5,-0.5){$x$}
+  \put(-0.5,2.5){$y$}
+\end{pspicture}</pre>
+                <button onclick="copyText('code11')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\11th.png" alt="Diagram 11 - Parametric plot with arrows" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 12</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 12: Simple Parametric Plot</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code12">
+\begin{pspicture}(-2.5,-2.5)(2.5,2.5)
+  \psset{xunit=3cm,yunit=3cm}
+  \psaxes[ticks=none,labels=none]{<->}(0,0)(-1.5,-0.75)(1.5,0.75)
+  \parametricplot[plotpoints=500]{0}{1}{t 0.25 t 2 exp add}
+  \put(4.5,-0.5){$x$}
+  \put(-0.5,2.5){$y$}
+\end{pspicture}</pre>
+                <button onclick="copyText('code12')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\12th.png" alt="Diagram 12 - Simple parametric plot" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 13</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Diagram 13: Algebraic Parametric Plot</h3>
+        <div class="flex-container">
+            <div class="code-container">
+                <pre id="code13">
+\begin{pspicture}[algebraic](-2.5,-2.5)(2.5,2.5)
+  \psset{xunit=3cm,yunit=3cm}
+  \psaxes[ticks=none,labels=none]{<->}(0,0)(-1.5,-0.75)(1.5,0.75)
+  \parametricplot[plotpoints=500]{0}{1}{t|0.25+t^2}
+  \put(4.5,-0.5){$x$}
+  \put(-0.5,2.5){$y$}
+\end{pspicture}</pre>
+                <button onclick="copyText('code13')">Copy</button>
+            </div>
+            <div class="image-container">
+                <img src="img\13th.png" alt="Diagram 13 - Algebraic parametric plot" />
+                <div style="position: absolute; text-align: center; font-weight: bold;">Image 14</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Full Document</h3>
+        <pre id="fullcode">
+\documentclass{article}
+\usepackage{pstricks,pst-plot,pstricks-add,amsmath}
+\begin{document}
+\begin{pspicture}(8,8)
+  \psgrid(0,0)(8,8)
+  % dotted red segment
+  \psline[linestyle=dotted,linecolor=red,linewidth=2pt](2,3)(4,5)
+  % blue triangle
+  \psline[linecolor=blue](1,1)(5,1)(1,4)(1,1)
+  % hollow circle
+  \pscircle[linestyle=dotted](3,2.5){2.5}
+  % filled small circle
+  \pscircle[fillstyle=solid,fillcolor=blue](2,2){1}
+  % vectors
+  \psline{<-}(5,5)(7,7)
+  \psline{<->}(1.5,5.5)(3.5,5.5)
+  % filled dot and cross dots
+  \pscircle*(6,6){1}
+  \psdots[dotstyle=+](1.5,6.5)(1.5,7.5)
+  \psdots[dotstyle=o](1.8,6.8)
+\end{pspicture}
+\begin{pspicture}(6,6)
+  \psset{unit=1.5}             % 1 unit = 1.5 cm
+  \psgrid(0,0)(9,9)
+  \pscircle(2,2){1}
+\end{pspicture}
+\begin{pspicture}(6,6)
+  \psset{fillcolor=yellow,linecolor=blue}
+  \psgrid(0,0)(9,9)
+  \pscircle[fillstyle=solid](2,2){1}
+  \psline(2,2)(4,4)
+  \psline[linestyle=dashed](1,2)(4,5)
+\end{pspicture}
+\begin{pspicture}(5,5)
+  \psgrid(0,0)(7,7)
+  \psline(1,1)(3,1)(2,2.732)(1,1)
+  % right‐side arc
+  \psarc[linewidth=0.1pt](1,1){2}{0}{70}
+  % left‐side arc
+  \psarc[linewidth=0.1pt](3,1){2}{110}{180}
+\end{pspicture}
+\begin{pspicture}(8,8)
+  \pscircle(2,2){1.5}
+  \pswedge[fillstyle=solid,fillcolor=blue](2,2){1.5}{0}{60}
+  \put(2.75,1.7){$r$}
+  \put(2.25,2){$\theta$}
+  \put(3.25,3){circle}
+  \rput{90}(2,4){$r$}
+\end{pspicture}
+\begin{pspicture}(7,7)
+  \psgrid(0,0)(9,9)
+  \psclip{\psellipse(2,2)(1.5,1)}
+    \put(1.7,1.7){$C$}
+    \psline[fillstyle=solid,fillcolor=magenta](2,2)(4,2)(4,4)(2,2)
+    \psline(8,8)(9,9)  % outside clip—won't show
+  \endpsclip
+  \psellipse(2,2)(1.5,1) % redraw boundary
+\end{pspicture}
+\begin{pspicture}(-2,-2)(2,2)
+  \psgrid(-2,-2)(5,5)
+  \parabola{<->}(-2,1)(0,0)
+  \psline{<->}(-2,-1)(2,-1)
+  \put(0,1){\circle*{0.1}}
+  \put(-0.5,1){$F$}
+\end{pspicture}
+\begin{pspicture}(5,4)
+  \psset{unit=0.5}
+  \psgrid(0,0)(13,13)
+  \def\cross{%
+    \psline[fillstyle=solid,fillcolor=green]
+      (0,0)(1,0)(1,1)(2,1)(2,2)(1,2)(1,3)(0,3)(0,2)(-1,2)(-1,1)(0,1)(0,0)%
+  }
+  \put(3,1){\cross}
+  \put(6,2){\cross}
+  \put(9,3){\cross}
+  \rput{60}(10,10){\cross}
+\end{pspicture}
+\begin{pspicture}(-3,-4.25)(7.5,4.25)
+  \psset{xunit=2cm,yunit=2cm}
+  \psaxes[linecolor=red,linewidth=0.1pt]{<->}(5,3)
+  \psplot[algebraic=true,plotpoints=2500,linecolor=blue]
+    {0.025}{2}{sin(1/x)}
+  \put(7,-0.5){$x$}
+  \put(-0.5,5){$y$}
+  \put(3,3){$y=\sin\dfrac1x$}
+\end{pspicture}
+\begin{pspicture}(-0.5,-0.5)(5,5.5)
+  \psset{xunit=4cm,yunit=4cm,plotpoints=500}
+  \psaxes{->}(0,0)(1.25,1.25)
+  \psplot[algebraic=true,linecolor=red]{0}{1}{sqrt(x)}
+  \psplot[algebraic=true,linecolor=blue]{0}{1}{x^2}
+  \put(5,-0.5){$x$}
+  \put(-0.5,5){$y$}
+  \put(1.75,3.75){$y=\sqrt{x}$}
+\end{pspicture}
+\begin{pspicture}(-2.5,-2.5)(2.5,2.5)
+  \psset{xunit=3cm,yunit=3cm}
+  \psaxes[ticks=none,labels=none]{<->}(0,0)(-2.5,-0.75)(2.5,0.75)
+  \parametricplot[plotpoints=500,arrows=->,arrowscale=1.5]
+    {0}{360}{1 t cos add t sin}
+  \put(4.5,-0.5){$x$}
+  \put(-0.5,2.5){$y$}
+\end{pspicture}
+\begin{pspicture}(-2.5,-2.5)(2.5,2.5)
+  \psset{xunit=3cm,yunit=3cm}
+  \psaxes[ticks=none,labels=none]{<->}(0,0)(-1.5,-0.75)(1.5,0.75)
+  \parametricplot[plotpoints=500]{0}{1}{t 0.25 t 2 exp add}
+  \put(4.5,-0.5){$x$}
+  \put(-0.5,2.5){$y$}
+\end{pspicture}
+\begin{pspicture}[algebraic](-2.5,-2.5)(2.5,2.5)
+  \psset{xunit=3cm,yunit=3cm}
+  \psaxes[ticks=none,labels=none]{<->}(0,0)(-1.5,-0.75)(1.5,0.75)
+  \parametricplot[plotpoints=500]{0}{1}{t|0.25+t^2}
+  \put(4.5,-0.5){$x$}
+  \put(-0.5,2.5){$y$}
+\end{pspicture}
+\end{document}</pre>
+        <button onclick="copyText('fullcode')">Copy Full Document</button>
+    </div>
+
+    <script>
+        function copyText(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            navigator.clipboard.writeText(text).then(function() {
+                alert("Copied to clipboard!");
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
